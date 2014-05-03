@@ -16,10 +16,10 @@ public class GameClass extends ApplicationAdapter {
 		batch = new SpriteBatch();
 
 		input = new InputHandler(Gdx.input);
-		activeScene = new Scene();
-		Entity e = new Entity();
-		CRender crender = new CRender(batch, "data/jet.png");
-		Component ctouch = new CTouch(input, crender);
+		activeScene = new Scene(this);
+		Entity e = new Entity(activeScene);
+		CRender crender = new CRender(e, batch, "data/jet.png");
+		Component ctouch = new CTouch(e, input, crender);
 		e.addComponent(crender);
 		e.addComponent(ctouch);
 		activeScene.entities.add(e);	

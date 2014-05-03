@@ -4,7 +4,8 @@ public class CTouch extends Component {
 	InputHandler input;
 	CRender crender;
 
-	public CTouch(InputHandler input, CRender crender) {
+	public CTouch(Entity entity, InputHandler input, CRender crender) {
+		super(entity);
 		this.input = input;
 		this.crender = crender;
 	}

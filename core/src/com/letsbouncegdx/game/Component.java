@@ -1,7 +1,11 @@
 package com.letsbouncegdx.game;
 
 public abstract class Component {
-	private Entity container;
+	public Entity entity;
+	
+	public Component(Entity entity) {
+		this.entity = entity;
+	}
 	
 	abstract void update();
 }

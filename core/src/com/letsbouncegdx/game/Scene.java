@@ -4,18 +4,12 @@ import java.util.LinkedList;
 import java.util.List;
 
 public class Scene {
+	public GameClass game;
 	public LinkedList<Entity> entities; 
 	
-	public Scene() {
-		initialize();
-	}
-	
-	public Scene(List<Entity> entities) {
-		this.entities = (LinkedList<Entity>)entities;
-	}
-	
-	private void initialize() {
-		entities = new LinkedList<Entity>();
+	public Scene(GameClass game) {
+		this.entities = new LinkedList<Entity>();
+		this.game = game;
 	}
 	
 	public void update() {
