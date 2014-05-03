@@ -6,9 +6,10 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 public class CRender extends Component {
 	private SpriteBatch batch;
 	private Texture texture;
-	public CRender(SpriteBatch batch, Texture texture) {
+
+	public CRender(SpriteBatch batch, String imageUri) {
 		this.batch = batch;
-		this.texture = texture;
+		this.texture = new Texture(imageUri);
 	}
 	@Override
 	public void update() {

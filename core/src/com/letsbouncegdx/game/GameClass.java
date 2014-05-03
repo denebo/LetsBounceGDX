@@ -14,11 +14,10 @@ public class GameClass extends ApplicationAdapter {
 	@Override
 	public void create () {
 		batch = new SpriteBatch();
-		img = new Texture("badlogic.jpg");
 
 		activeScene = new Scene();
 		Entity e = new Entity();
-		e.addComponent(new CRender(batch, img));
+		e.addComponent(new CRender(batch, "data/jet.png"));
 		activeScene.entities.add(e);	
 	}
 
