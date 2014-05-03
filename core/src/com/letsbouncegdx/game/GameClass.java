@@ -9,15 +9,19 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 public class GameClass extends ApplicationAdapter {
 	Scene activeScene;
 	SpriteBatch batch;
-	Texture img;
+	InputHandler input;
 	
 	@Override
 	public void create () {
 		batch = new SpriteBatch();
 
+		input = new InputHandler(Gdx.input);
 		activeScene = new Scene();
 		Entity e = new Entity();
-		e.addComponent(new CRender(batch, "data/jet.png"));
+		CRender crender = new CRender(batch, "data/jet.png");
+		Component ctouch = new CTouch(input, crender);
+		e.addComponent(crender);
+		e.addComponent(ctouch);
 		activeScene.entities.add(e);	
 	}
 
