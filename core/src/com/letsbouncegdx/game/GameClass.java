@@ -14,24 +14,26 @@ public class GameClass extends ApplicationAdapter {
 	@Override
 	public void create () {
 		batch = new SpriteBatch();
-
 		input = new InputHandler(Gdx.input);
+		
+		//testing
 		activeScene = new Scene(this);
 		Entity e = new Entity(activeScene);
 		CRender crender = new CRender(e, batch, "data/jet.png");
-		Component ctouch = new CTouch(e, input, crender);
+		CTouch ctouch = new CTouch(e, crender);
+		CFall cfall = new CFall(e, crender, 1);
 		e.addComponent(crender);
 		e.addComponent(ctouch);
+		e.addComponent(cfall);
 		activeScene.entities.add(e);	
 	}
 
 	@Override
 	public void render () {
-		Gdx.gl.glClearColor(1, 0, 0, 1);
+		Gdx.gl.glClearColor(1, 1, 1, 1);
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 		batch.begin();
 
-		// testing
 		activeScene.update();
 
 		batch.end();
