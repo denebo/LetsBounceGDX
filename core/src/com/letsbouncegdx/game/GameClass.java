@@ -7,6 +7,7 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
 public class GameClass extends ApplicationAdapter {
+	Scene activeScene;
 	SpriteBatch batch;
 	Texture img;
 	
@@ -14,6 +15,11 @@ public class GameClass extends ApplicationAdapter {
 	public void create () {
 		batch = new SpriteBatch();
 		img = new Texture("badlogic.jpg");
+
+		activeScene = new Scene();
+		Entity e = new Entity();
+		e.addComponent(new CRender(batch, img));
+		activeScene.entities.add(e);	
 	}
 
 	@Override
@@ -21,7 +27,10 @@ public class GameClass extends ApplicationAdapter {
 		Gdx.gl.glClearColor(1, 0, 0, 1);
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 		batch.begin();
-		batch.draw(img, 0, 0);
+
+		// testing
+		activeScene.update();
+
 		batch.end();
 	}
 }

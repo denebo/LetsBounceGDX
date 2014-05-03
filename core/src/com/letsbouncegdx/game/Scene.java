@@ -4,7 +4,7 @@ import java.util.LinkedList;
 import java.util.List;
 
 public class Scene {
-	LinkedList<Entity> entities; 
+	public LinkedList<Entity> entities; 
 	
 	public Scene() {
 		initialize();
