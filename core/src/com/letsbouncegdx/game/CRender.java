@@ -7,8 +7,8 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 public class CRender extends Component {
 	private SpriteBatch batch;
 	private Texture texture;
-	public int x;
-	public int y;
+	private int x;
+	private int y;
 
 	public CRender(Entity container, SpriteBatch batch, String imageUri) {
 		super(container);
@@ -25,4 +25,8 @@ public class CRender extends Component {
 	
 	public int getWidth() { return texture.getWidth(); }
 	public int getHeight() { return texture.getHeight(); }
+	public int getX() { return x; }
+	public void setX(int x) { this.x = x; }
+	public int getY() { return y; }
+	public void setY(int y) { this.y = y; }
 }

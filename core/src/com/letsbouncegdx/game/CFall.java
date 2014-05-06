@@ -15,6 +15,6 @@ public class CFall extends Component {
 			accelY = 0;
 			
 		accelY += gravity;
-		crender.y += accelY;
+		crender.setY(crender.getY() + accelY);
 	}
 }
