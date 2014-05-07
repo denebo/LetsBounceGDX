@@ -20,10 +20,12 @@ public class GameClass extends ApplicationAdapter {
 		Entity e = new Entity(activeScene);
 		CRender crender = new CRender(e, batch, "data/ball_blue.png");
 		CTouch ctouch = new CTouch(e, crender);
-		CFall cfall = new CFall(e, crender, 1);
+		CFall cfall = new CFall(e, crender, 5.0f);
+		CFallTouch cfalltouch = new CFallTouch(e, cfall, ctouch);
 		e.addComponent(crender);
 		e.addComponent(ctouch);
 		e.addComponent(cfall);
+		e.addComponent(cfalltouch);
 		activeScene.entities.add(e);	
 	}
 

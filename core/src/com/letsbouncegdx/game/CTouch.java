@@ -23,6 +23,7 @@ public class CTouch extends Component {
 				touching = true;
 			}
 		}
+		touching = true;
 	}
 	
 	public boolean isTouching() {
