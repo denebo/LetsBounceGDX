@@ -1,5 +1,7 @@
 package com.letsbouncegdx.game;
 
+import com.badlogic.gdx.Gdx;
+
 public class CTouch extends Component {
 	private CRender crender;
 	private boolean touching;
@@ -16,14 +18,13 @@ public class CTouch extends Component {
         touching = false;
 
 		if(input.isTouched()){
-			if(input.getTouchX() > crender.getX()
-					&& input.getTouchX() < crender.getX() + crender.getWidth() / 2
-					&& input.getTouchY() > crender.getY()
-					&& input.getTouchY() < crender.getY() + crender.getHeight() / 2) {
+			if(input.getTouchX() > crender.x
+					&& input.getTouchX() < crender.x + crender.getWidth()
+					&& input.getTouchY() > crender.y
+					&& input.getTouchY() < crender.y + crender.getHeight()) {
 				touching = true;
-			}
+			}	
 		}
-		touching = true;
 	}
 	
 	public boolean isTouching() {

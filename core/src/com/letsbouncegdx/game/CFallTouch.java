@@ -5,6 +5,7 @@ public class CFallTouch extends Component {
 	CFall cfall;
 	CRender crender;
 	
+	boolean touched;
 	boolean animating;
 	
 	public CFallTouch(Entity entity, CFall cfall, CTouch ctouch) {
@@ -12,18 +13,23 @@ public class CFallTouch extends Component {
 		this.ctouch = ctouch;
 		this.cfall = cfall;
 		this.crender = cfall.crender;
+		this.touched = false;
 		this.animating = false;
 	}
 	
 	@Override
 	public void update() {
-//		if(ctouch.isTouching()) {
-//			cfall.accelY = -cfall.accelY;
-//			crender.alpha = 0.5f;
-//		}
-//		
-//		if(crender.alpha < 1.0f) {
-//			crender.alpha += 0.05f;
-//		}
+		if(ctouch.isTouching() && !touched) {
+			cfall.accelY = -Math.abs(cfall.accelY);
+			crender.alpha = 0.5f;
+			touched = true;
+		}
+		
+		if(!ctouch.isTouching())
+			touched = false;
+		
+		if(crender.alpha < 0.99f) {
+			crender.alpha += 0.01f;
+		}
 	}
 }

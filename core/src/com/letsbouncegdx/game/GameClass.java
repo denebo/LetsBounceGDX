@@ -18,9 +18,9 @@ public class GameClass extends ApplicationAdapter {
 		//testing
 		activeScene = new Scene(this);
 		Entity e = new Entity(activeScene);
-		CRender crender = new CRender(e, batch, "data/ball_blue.png");
+		CRender crender = new CRender(e, batch, "data/ball_blue.png", 150, 0, 1.0f);
 		CTouch ctouch = new CTouch(e, crender);
-		CFall cfall = new CFall(e, crender, 5.0f);
+		CFall cfall = new CFall(e, crender, 0.2f);
 		CFallTouch cfalltouch = new CFallTouch(e, cfall, ctouch);
 		e.addComponent(crender);
 		e.addComponent(ctouch);

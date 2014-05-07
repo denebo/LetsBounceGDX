@@ -12,6 +12,6 @@ public class CFall extends Component {
 	
 	@Override void update() {	
 		accelY += gravity;
-		crender.setY(crender.getY() + accelY);
+		crender.y += accelY;
 	}
 }
