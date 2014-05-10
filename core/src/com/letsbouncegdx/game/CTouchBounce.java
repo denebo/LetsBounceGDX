@@ -1,5 +1,8 @@
 package com.letsbouncegdx.game;
 
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.audio.Sound;
+
 public class CTouchBounce extends Component {
 	CTouch ctouch;
 	CFall cfall;
@@ -9,8 +12,9 @@ public class CTouchBounce extends Component {
 	boolean animating;
 	float bounce,
 		  accelXCap;
+	Sound touchSound;
 	
-	public CTouchBounce(Entity entity, CFall cfall, CTouch ctouch, float bounce, float accelXCap) {
+	public CTouchBounce(Entity entity, CFall cfall, CTouch ctouch, float bounce, float accelXCap, String touchSound) {
 		super(entity);
 		this.ctouch = ctouch;
 		this.cfall = cfall;
@@ -19,11 +23,13 @@ public class CTouchBounce extends Component {
 		this.touched = false;
 		this.animating = false;
 		this.bounce = bounce;
+		this.touchSound = Gdx.audio.newSound(Gdx.files.internal(touchSound));
 	}
 	
 	@Override
 	public void update() {
 		if(ctouch.isTouching() && !touched) {
+			touchSound.play();
 			int x = ctouch.getX();
 			int y = ctouch.getY();
 			
@@ -34,7 +40,7 @@ public class CTouchBounce extends Component {
 			float forceX = (float)Math.cos(angle) * bounce;
 			float forceY = (float)Math.sin(angle) * bounce;
 			
-			cfall.accelY = 0;
+			cfall.accelY = cfall.accelX = 0;
 			cfall.accelY -= forceY;
 			if(Math.abs(cfall.accelX - forceX) < accelXCap)
 				cfall.accelX -= forceX;
