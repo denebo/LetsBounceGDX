@@ -5,16 +5,18 @@ import com.badlogic.gdx.Gdx;
 public class CTouch extends Component {
 	private CRender crender;
 	private boolean touching;
+	
+	InputHandler input;
 
 	public CTouch(Entity entity, CRender crender) {
 		super(entity);
 		this.crender = crender;
 		this.touching = false;
+		this.input = entity.scene.game.input;
 	}
 
 	@Override
 	public void update() {
-        InputHandler input = entity.scene.game.input;
         touching = false;
 
 		if(input.isTouched()){
@@ -26,6 +28,9 @@ public class CTouch extends Component {
 			}	
 		}
 	}
+	
+	public int getX() { return input.getTouchX(); }
+	public int getY() { return input.getTouchY(); }
 	
 	public boolean isTouching() {
 		return touching;

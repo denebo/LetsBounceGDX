@@ -21,11 +21,13 @@ public class GameClass extends ApplicationAdapter {
 		CRender crender = new CRender(e, batch, "data/ball_blue.png", 150, 0, 1.0f);
 		CTouch ctouch = new CTouch(e, crender);
 		CFall cfall = new CFall(e, crender, 0.2f);
-		CFallTouch cfalltouch = new CFallTouch(e, cfall, ctouch);
+		CTouchBounce cfalltouch = new CTouchBounce(e, cfall, ctouch, 15.0f, 20.0f);
+		CConstraints cconstraints = new CConstraints(e, cfall, 0, Gdx.graphics.getWidth(), 0, 0);
 		e.addComponent(crender);
 		e.addComponent(ctouch);
 		e.addComponent(cfall);
 		e.addComponent(cfalltouch);
+		e.addComponent(cconstraints);
 		activeScene.entities.add(e);	
 	}
 

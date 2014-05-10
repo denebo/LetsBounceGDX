@@ -2,7 +2,9 @@ package com.letsbouncegdx.game;
 
 public class CFall extends Component {
 	CRender crender;
-	float gravity, accelY;
+	float gravity, 
+		  accelY, 
+		  accelX;
 	
 	public CFall(Entity entity, CRender crender, float gravity) {
 		super(entity);
@@ -12,6 +14,8 @@ public class CFall extends Component {
 	
 	@Override void update() {	
 		accelY += gravity;
+
 		crender.y += accelY;
+		crender.x += accelX;
 	}
 }

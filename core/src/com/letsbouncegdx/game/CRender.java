@@ -31,6 +31,8 @@ public class CRender extends Component {
 		sprite.draw(batch, alpha);
 	}
 	
+	public float getCenterX() { return x + getWidth() / 2; }
+	public float getCenterY() { return y + getHeight() / 2; }
 	public float getWidth() { return texture.getWidth(); }
 	public float getHeight() { return texture.getHeight(); }
 }
