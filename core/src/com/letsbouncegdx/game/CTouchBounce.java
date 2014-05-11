@@ -14,11 +14,10 @@ public class CTouchBounce extends Component {
 		  accelXCap;
 	Sound touchSound;
 	
-	public CTouchBounce(Entity entity, CFall cfall, CTouch ctouch, float bounce, float accelXCap, String touchSound) {
+	public CTouchBounce(Entity entity, CFall cfall, CTouch ctouch, float bounce, String touchSound) {
 		super(entity);
 		this.ctouch = ctouch;
 		this.cfall = cfall;
-		this.accelXCap = accelXCap;
 		this.crender = cfall.crender;
 		this.touched = false;
 		this.animating = false;
@@ -42,8 +41,7 @@ public class CTouchBounce extends Component {
 			
 			cfall.accelY = cfall.accelX = 0;
 			cfall.accelY -= forceY;
-			if(Math.abs(cfall.accelX - forceX) < accelXCap)
-				cfall.accelX -= forceX;
+			cfall.accelX -= forceX;
 			
 			crender.alpha = 0.5f;
 			touched = true;

@@ -29,5 +29,15 @@ public class CConstraints extends Component {
 			cfall.accelX = -cfall.accelX;
 			crender.x = x2 - crender.getWidth();
 		}
+		
+		if(crender.y < y1) {
+			cfall.accelY = -cfall.accelY;
+			crender.y = y1;
+		}
+
+		if(crender.y + crender.getHeight() > y2) {
+			cfall.accelY = -cfall.accelY;
+			crender.y = y2 - crender.getHeight();
+		}
 	}
 }
