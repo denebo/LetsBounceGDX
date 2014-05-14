@@ -6,7 +6,7 @@ import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
 public class CRender extends Component {
-	private SpriteBatch batch;
+	public SpriteBatch batch;
 	private Texture texture;
 	private Sprite sprite;
 	public float x;

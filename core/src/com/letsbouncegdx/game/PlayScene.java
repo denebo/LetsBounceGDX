@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.audio.Sound;
+import com.badlogic.gdx.graphics.Color;
 
 public class PlayScene extends Scene {
 	Sound collisionSound;
@@ -13,9 +14,9 @@ public class PlayScene extends Scene {
 		super(game);
 		this.collisionSound = Gdx.audio.newSound(Gdx.files.internal("data/collision.mp3"));
 		
-		addBall(0, 0);
-		addBall(256, 0);
-		addBall(512, 0);
+		addBall(0, 0, 0.2f);
+		addBall(256, 0, 1.0f);
+		addBall(512, 0, 0.02f);
 	}
 	
 	@Override
@@ -51,14 +52,14 @@ public class PlayScene extends Scene {
 		}
 	}
 
-	public void addBall(float x, float y) {
+	public void addBall(float x, float y, float gravity) {
 		Entity e = new Entity(this);
 		CRender crender = new CRender(e, game.batch, "data/ball_blue.png", x, y, 1.0f);
 		CTouch ctouch = new CTouch(e, crender);
-		CFall cfall = new CFall(e, crender, 0.2f, 20.0f, 25.0f);
+		CFall cfall = new CFall(e, crender, gravity, 20.0f, 25.0f);
 		CTouchBounce ctouchbounce = new CTouchBounce(e, cfall, ctouch, 25.0f, "data/touchsound.mp3");
 		CConstraints cconstraints = new CConstraints(e, cfall, 0, Gdx.graphics.getWidth(), 0, Gdx.graphics.getHeight());
-		CCollision ccollision = new CCollision(e, cfalls);
+		CTouchCount ctouchcount = new CTouchCount(e, ctouch, crender, 10, Color.WHITE);
 		
 		cfalls.add(cfall);
 
@@ -67,7 +68,7 @@ public class PlayScene extends Scene {
 		e.addComponent(cfall);
 		e.addComponent(ctouchbounce);
 		e.addComponent(cconstraints);
-		e.addComponent(ccollision);
+		e.addComponent(ctouchcount);
 		entities.add(e);	
 	}
 }
